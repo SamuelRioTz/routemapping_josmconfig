@@ -482,7 +482,7 @@
 <maps key="taggingpreset.entries" xmlns="http://josm.openstreetmap.de/preferences-1.0">
     <map>
       <tag key="title" value="TrufiApp"/>
-      <tag key="url" value="https://github.com/SamuelRioTz/Trufi-Presets/releases/download/v1.0.5/trufi.zip"/>
+      <tag key="url" value="https://github.com/SamuelRioTz/Trufi-Presets/releases/download/v1.0.5/trufi.zip"/> 
     </map>
   </maps>
 <tag key="toggleDialogs.width" value="498" xmlns="http://josm.openstreetmap.de/preferences-1.0"/>

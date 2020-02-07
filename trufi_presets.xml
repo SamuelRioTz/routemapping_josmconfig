@@ -1,39 +1,42 @@
-<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0" author="Samuel Rioja - Trufi Association" version="1.0" link="https://github.com/trufi-app" shortdescription="Trufi Association" description="One click presets for the new Public Transport in Bolivia">
-    <group name="Trufi Association" icon="https://www.trufi.app/wp-content/uploads/2019/02/48.png">
-        <item name="Stop Initial" type="node" icon="presets/transport/bus_old.svg">
+<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0" author="Samuel Rioja (Trufi) + <Your name>" version="1.0" link="https://github.com/trufi-app" shortdescription="Trufi Association" description="One click presets for the new Public Transport in <country or region name or both>"> <!-- The name of the author of this preset file, the link to the project it is for, for `shortdescription` the name of your community/organisation and a brief description for what this preset file is for. -->
+    <group name="Trufi Association" icon="https://www.trufi.app/wp-content/uploads/2019/02/48.png"> <!-- The name of this preset and the icon path (can be online but also offline resource)-->
+        <item name="Stop Initial" type="node" icon="presets/transport/bus_old.svg"> <!-- BEGIN OF BUS STOP PRESET -->
             <label text="Stop Initial"/>
             <label text=""/>
-            <key key="public_transport" value="station"/>
-            <key key="amenity" value="bus_station"/>
-            <key key="bus" value="yes"/>
-            <text key="name" text="Stop name" default="" delete_if_empty="true"/>
+            <key key="public_transport" value="platform"/> <!-- This line corresponds to the OSM tag `public_transport=platform` being add to OSM during upload process for each bus stop you added via this preset. See https://wiki.osm.org/Key:public_transport for more values which might fit better in your commune. It gets automatically added when user uses this preset.-->
+            <key key="bus" value="yes"/> <!-- This line corresponds to the OSM tag `bus=yes` being add to OSM during upload process for each bus stop you added via this preset. See https://wiki.osm.org/Key:bus for more values which might fit better in your commune. It gets automatically added when user uses this preset.-->
+            <text key="name" text="Stop name" default="" delete_if_empty="true"/> <!-- This line allows users of this preset to enter the name of the bus stop. This allows user to decide the value of the key `name`.-->
         </item>
-        <item name="Bus Route" type="relation" icon="presets/transport/way/path.svg">
+        <item name="Bus Route" type="relation" icon="presets/transport/way/path.svg"> <!-- BEGIN OF ROUTE PRESET -->
+        	<!--This route includes just the way from point A to point B .-->
             <label text="Bus Route"/>
             <label text=""/>
             <key key="public_transport:version" value="2"/>
             <key key="type" value="route"/>
 
-            <text key="name" text="Route name" default="" delete_if_empty="true"/>
-            <text key="from" text="From" default="" delete_if_empty="true"/>
-            <text key="to" text="To" default="" delete_if_empty="true"/>
-            <text key="operator" text="Operator" default="" delete_if_empty="true"/>
-            <text key="ref" text="ref" default="" delete_if_empty="true"/>
+            <text key="name" text="Route name" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `name=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the name of the route.-->
+            <text key="from" text="From" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `from=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the name of the stop the route starts at.-->
+            <text key="to" text="To" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `to=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the name of the bus the route ends at-->
+            <text key="operator" text="Operator" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `operator=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the name of the operator of the route.-->
+            <!--<key key="operator" value="some_value"/>--> <!-- ALTERNATIVELY TO THE ABOVE LINE: If the region you're mapping bus routes in get all powered by just one operator. Then replace `some_value` with the name of the operator. CAUTION WHEN ACTIVATING BY UNCOMMENTING: The key gets automatically added when user uses this preset. This line cannot be applied when mapping a region where more than just one operator power the routes. Uncommenting this line requires you to comment the line above. -->
+            <text key="ref" text="ref" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `ref=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the ref under the bus stop is also known. Mostly you won't need it, have it or know it.-->
             <label text=""/>
-            <combo key="route" text="Route type" values="bus,share_taxi" default="bus"/>
-            <combo key="wheelchair" text="Wheelchair (no)" values="no,yes" default="no" delete_if_empty="true"/>
-            <combo key="on_demand" text="On demand (yes)" values="no,yes" default="yes" delete_if_empty="true"/>
+            <combo key="route" text="Route type" values="bus,share_taxi" default="bus"/> <!-- It creates a combo for the user to select the key value of key `route` via list. The default value is `bus` but can be always changed by changing the entity of `default`. See wiki https://wiki.osm.org/Key:route for a description of key `route`.-->
+            <combo key="wheelchair" text="Wheelchair (no)" values="no,yes" default="no" delete_if_empty="true"/>  <!-- It creates a combo for the user to select the key value of key `wheelchair` via list. The default value is `no` but can be always changed by changing the entity of `default`. See wiki https://wiki.osm.org/Key:wheelchair for a description of key `wheelchair`.-->
+            <combo key="on_demand" text="On demand (yes)" values="no,yes" default="yes" delete_if_empty="true"/>  <!-- It creates a combo for the user to select the key value of key `route` via list. The default value is `bus` but can be always changed by changing the entity of `default`. See wiki https://wiki.osm.org/Key:on_demand for a description of key `on_demand`.-->
         </item>
-        <item name="Master Route" type="relation" icon="presets/barrier/entrance.svg">
+        <item name="Master Route" type="relation" icon="presets/barrier/entrance.svg"> <!-- BEGIN OF MASTER ROUTE PRESET -->
+        	<!--This route includes the route from point A to point B  and the route from point B to point A. It contains both routes belonging to the line and gives trip planners a good overview of the bus line they will use.-->
             <label text="Master Route"/>
             <label text=""/>
             <key key="public_transport:version" value="2"/>
             <key key="type" value="route_master"/>
             
-            <text key="name" text="Master route name" default="" delete_if_empty="true"/>
-            <text key="operator" text="Operator" default="" delete_if_empty="true"/>
-            <text key="ref" text="ref" default="" delete_if_empty="true"/>
-            <combo key="route_master" text="route" values="bus,share_taxi" default="bus"/>
+            <text key="name" text="Master route name" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `name=*` being add to OSM during upload process for each master route you added via this preset. It allows the user to specify the name of the master route.-->
+            <text key="operator" text="Operator" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `operator=*` being add to OSM during upload process for each master route you added via this preset. It allows the user to specify the name of the operator of the master route. It corresponds to the name of the operator tagged on the two routes the master route combines.-->
+            <!--<key key="operator" value="some_value"/>--> <!-- ALTERNATIVELY TO THE ABOVE LINE: If the region you're mapping bus master routes in get all powered by just one operator. Then replace `some_value` with the name of the operator. CAUTION WHEN ACTIVATING BY UNCOMMENTING: The key gets automatically added when user uses this preset. This line cannot be applied when mapping a region where more than just one operator power the routes. Uncommenting this line requires you to comment the line above. -->
+            <text key="ref" text="ref" default="" delete_if_empty="true"/> <!-- This corresponds to the OSM tag `ref=*` being add to OSM during upload process for each route you added via this preset. It allows the user to specify the ref under the whole line is also known. Mostly you won't need it, have it or know it.-->
+            <combo key="route_master" text="route" values="bus,share_taxi" default="bus"/>  <!-- It creates a combo for the user to select the key value of key `route_master` via list. The default value is `bus` but can be always changed by changing the entity of `default`. Set the default value to the default value you've chosen for the preset with name `Bus Route`. See wiki https://wiki.osm.org/Key:route_master for a description of key `route_master`.-->
         </item>
     </group>
 </presets>
