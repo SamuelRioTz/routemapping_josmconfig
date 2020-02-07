@@ -2,7 +2,7 @@
 
 This repository contains the necessary files to make it easier for you to actually concentrate on mapping (bus) routes via JOSM. It is a project for Trufi Association.
 
-![](/mnt/aaf237f4-62be-4172-83b9-69875bfb28d9/private/Documents/OSM/Trufi Association/tools/routemapping_josmconfig/img/routemapping-look.png)
+![](img/routemapping-look.png)
 
 # Good to know
 
@@ -40,7 +40,7 @@ This is actually the really important part which will also take the most time.
 
 2. The file is documented. You should understand it. But here are some aspects good to know. The following three images show you the schematics of UI creation in preset means. It shows you which part of the preset code does which part of the UI. Study the images carefully:
    
-   ![](/mnt/aaf237f4-62be-4172-83b9-69875bfb28d9/private/Documents/OSM/Trufi Association/tools/routemapping_josmconfig/img/WYSIWYG-01.png)![](/mnt/aaf237f4-62be-4172-83b9-69875bfb28d9/private/Documents/OSM/Trufi Association/tools/routemapping_josmconfig/img/WYSIWYG-02.png)![](/mnt/aaf237f4-62be-4172-83b9-69875bfb28d9/private/Documents/OSM/Trufi Association/tools/routemapping_josmconfig/img/WYSIWYG-03.png)
+   ![](img/WYSIWYG-01.png)![](img/WYSIWYG-02.png)![](img/WYSIWYG-03.png)
    
    ## Preparing preset for production use.
    
