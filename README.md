@@ -42,15 +42,35 @@ This is actually the really important part which will also take the most time.
    
    ![](img/WYSIWYG-01.png)![](img/WYSIWYG-02.png)![](img/WYSIWYG-03.png)
    
+   3. A good another way of understanding the file is by understanding its schematics.
+      
+      ```xml
+      <presets author="Author name" link="Url to project this file is for" shortdescription="Short description of what this preset file allows you to do" description="Longer description of what this preset file allows you to do"> <!-- Description of the presets this file contains. This is metadata that is equal for every preset specified in here.-->
+          <group name="Name of group" icon="Url to the online resource containing the icon"> <!-- Presets can be grouped to add extra metadata only to preset inside of it -->
+              <item name="Name of the preset" type="osm type for which this preset can be used. Seperate multiple types by comma. Supported osm types are 'node', 'way', 'relation'." icon="url to preset icon">
+                  <label text="Label 1" /> <!-- It creates a label (read-only text container) in the preset dialog with the content "Label 1"-->
+                  <key key="public_transport" value="platform"/> <!-- Tells JOSM to apply the OSM tag "public_transport=platform" to the object this preset is used on. The user cannot prevent that.-->
+                  <text key="name" text="Stop name" default="" delete_if_empty="true" /> <!--This shows a textfield prompting the user to specify the value of OSM key "name".-->
+                      <!-- XML attribute `key`: The key the user can specify a value for -->
+                      <!-- XML attribute `text`: The text to be shown to the user so he/she knows for what he/she is prompted to type in. -->
+                      <!-- XML attribute `default`: The default value of the key to apply when the user does not type anything into the textfield. -->
+                      <!-- XML attribute `delete_if_empty`: Can have the values "true" (JOSM will not apply the key to the preset when the user did not type anything (leaving the textfield empty)) and "false" (JOSM will also apply the key to the preset when the user did not type anything into the textfield. The value for XML attribute `default` will be applied instead.)-->
+                  <combo key="wheelchair" text="Wheelchair accessible?" values="no, yes" default="no" delete_if_empty="true"/> <!-- This shows a combo box (select from a predefined list of values) to the user prompting to decide which value to take for key "wheelchair". -->
+                      <!-- XML attribute `key`: The key the user can specify a value for -->
+                      <!-- XML attribute `text`: The text to be shown to the user so he/she knows for what he/she is prompted to select a value for. -->
+                      <!-- XML attribute `values`: A comma seperated list of values the user can select from. This is the list which will be shown to the user. -->
+                      <!-- XML attribute `default`: The default value of the key to apply when the user does not select anything from the list. -->
+                      <!-- XML attribute `delete_if_empty`: Can have the values "true" (JOSM will not apply the key to the preset when the user did not type anything (leaving the textfield empty)) and "false" (JOSM will also apply the key to the preset when the user did not select anything from the list. The value for XML attribute `default` will be applied instead.)-->
+              </item>
+          </group>
+      </preset>
+      ```
+      
+      
+   
    ## Preparing preset for production use.
    
    1. Compress the XML file `trufi_presets.xml` into a zip archive.
-      
-      - Structur of the zip archive:
-        
-        - `trufi_presets.zip` (or another name)
-          
-          - `trufi_presets.xml`
    
    2. Upload the zip file to the repository on GitHub.
    
@@ -74,12 +94,12 @@ The XML contains the configuration for JOSM and the plugins to be installed. Edi
    <tag key="url" value="https://github.com/SamuelRioTz/Trufi-Presets/releases/download/v1.0.5/trufi.zip"/>
    ```
 
-3. Change the value `https://github.com/SamuelRioTz/Trufi-Presets/releases/download/v1.0.5/trufi.zip` to the url pointing to the zip file you uploaded into your repository on GitHub by inserting the new value from your clipboard.
+3. Change the value `https://github.com/SamuelRioTz/Trufi-Presets/releases/download/v1.0.5/trufi.zip` to the url pointing to the zip file you uploaded into your repository on GitHub by inserting the new value from your clipboard e.g. `https://github.com/ValorNaram/routemapping_josmconfig/raw/master/trufi_presets.zip`
 
 4. Save your work and close your text editor.
 
 ## Finalization
 
-Upload all your changes to GitHub and follow the tutorial [here](https://github.com/ValorNaram/trufi_documentation/blob/master/installing-mapping-tool/install-bus-routes-mapping-tool.md) in order to activate your customized version of our tool in JOSM. Distribute the file `josmconfig-trufi-routes.xml` and nothing else to your community. Point them also to the tutorial on [how to install your customized version of our tool for mapping bus routes in JOSM](https://github.com/ValorNaram/trufi_documentation/blob/master/installing-mapping-tool/install-bus-routes-mapping-tool.md) so they know what do you. You should also consider pointing them to [our comprehensive guide on using JOSM for mapping bus routes](https://github.com/ValorNaram/trufi_documentation/blob/master/README.md).
+Upload all your changes to the forked GitHub repository and follow the tutorial [here](https://github.com/ValorNaram/trufi_documentation/blob/master/installing-mapping-tool/install-bus-routes-mapping-tool.md) in order to activate your customized version of our tool in JOSM. Distribute the customized file `josmconfig-trufi-routes.xml` (not our original one) and nothing else to your community. Point them also to the tutorial on [how to install your customized version of our tool for mapping bus routes in JOSM](https://github.com/ValorNaram/trufi_documentation/blob/master/installing-mapping-tool/install-bus-routes-mapping-tool.md) so they know what to do. You should also consider pointing them to [our comprehensive guide on using JOSM for mapping bus routes](https://github.com/ValorNaram/trufi_documentation/blob/master/README.md).
 
 
